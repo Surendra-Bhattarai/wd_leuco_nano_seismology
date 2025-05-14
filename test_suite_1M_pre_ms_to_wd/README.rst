@@ -4,7 +4,7 @@
 1M_pre_ms_to_wd
 ***************
 
-This test case checks the evolution of a 1 Msun, Z=0.02 metallicity from the pre-main sequence to a white dwarf. 
+This test case checks the evolution of a 1 Msun, Z=0.02 metallicity from the pre-main sequence to a white dwarf. This is from version r24.08.1
 
 This test case has six parts. Click to see a larger view of a plot.
 
