@@ -1,0 +1,57 @@
+&star_job
+
+  ! build our own model
+    create_initial_model = .true.
+    initial_model_relax_num_steps = 100
+    !use_other_build_initial_model   = .true.   ! added later to keep the WD in cooling track
+
+
+  ! this file can be used to specify the composition
+    relax_composition_filename = '/Users/surendrabhattarai/MESA/WD Project/creating_WD_builder_my_trial [for static composition relaxing model]/work/LOGS_improving_C_trend/0.600_Msun_mcore=0.60000_mgrad=0.20000/basic_HeCO_composition.dat'
+
+  ! net choice picks which isos are included
+    change_net = .true.
+    new_net_name = 'o18_and_ne22.net'
+
+  ! display on-screen plots
+    pgstar_flag = .true.
+
+/ ! end of star_job namelist
+
+&eos
+
+/ ! end of eos namelist
+
+&kap
+
+  ! opacities
+    use_type2_opacities = .true.  
+    Zbase = 0.02    
+
+/ ! end of kap namelist
+
+&controls
+
+  
+    
+    mixing_length_alpha = 1.800000
+    log_directory = 'LOGS_improving_C_trend/0.600_Msun_mcore=0.60000_mgrad=0.20000'! starting specifications
+    use_other_build_initial_model = .true.
+    initial_mass = 0.600000000000 ! in Msun
+    x_ctrl(1) = 1d7 ! 2e8 ! central temperature (K)
+    x_ctrl(2) = 1d-4 !0.01 ! initial Lcore (Lsun)
+
+  ! turn off burning
+    eps_nuc_factor = 0
+    dxdt_nuc_factor = 0
+
+  ! WD atm choice
+    atm_option = 'table' !'simple_photosphere'
+    atm_table =  'DB_WD_tau_25' ! original --> 'DB_WD_tau_25' , other option: 'WD_tau_25'
+
+  ! options for energy conservation (see MESA V, Section 3)
+     energy_eqn_option = 'eps_grav'
+     use_gold_tolerances = .false.
+
+
+/ ! end of controls namelist
